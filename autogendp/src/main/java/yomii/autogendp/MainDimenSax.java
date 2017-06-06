@@ -7,6 +7,7 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
@@ -22,7 +23,7 @@ import javax.xml.transform.stream.StreamResult;
  * Author: duke
  * <p>
  * amend by Yomii on 2017-06-05
- *
+ * <p>
  * 增加对带参数的values文件夹的适配，比如values-v19
  */
 public class MainDimenSax {
@@ -35,24 +36,40 @@ public class MainDimenSax {
      */
     public static void main(String[] args) {
         //数组第一项为基准宽度dp，后面为需要生成的对应宽度dp
-        if (args == null || args.length < 2) {
-            args = new String[]{"360", "384", "400", "411", "533", "640", "720", "768", "820"};
-            String outputString = "Used default DPs : ";
-            for (int i = 0; i < args.length; i++) {
-                outputString += args[i];
-                if (i != args.length - 1) {
-                    outputString += ",";
+        String[] widthDps;
+        //values文件夹的列表，每个参数都需要适配一次屏幕尺寸
+        String[] valuesArgs = {""};
+
+        if (args == null || args.length < 3) {
+            widthDps = new String[]{"360", "384", "400", "411", "533", "640", "720", "768", "820"};
+            StringBuilder outputString = new StringBuilder("Used default DPs : ");
+            for (int i = 0, j = widthDps.length; i < j; i++) {
+                outputString.append(widthDps[i]);
+                if (i != j - 1) {
+                    outputString.append(",");
                 }
             }
-            System.out.println(outputString);
+            System.out.println(outputString.toString());
+        } else {
+            widthDps = args;
+            for (int i = 0, j = args.length; i < j; i++) {
+                if ("-a".equals(args[i]) && i != j - 1) {
+                    widthDps = Arrays.copyOfRange(args, 0, i);
+                    valuesArgs = new String[j - i];
+                    valuesArgs[0] = "";
+                    System.arraycopy(args, i + 1, valuesArgs, 1, j - i - 1);
+                    break;
+                }
+            }
         }
+
+
         //当前根目录：Project/app/src/main/
         String baseDirPath = new File("./res/").getAbsolutePath();
         //基准dp，比喻：360dp
-        float baseDP = Float.parseFloat(args[0]);
-        //values文件夹的列表，每个参数都需要适配一次屏幕尺寸
-        String[] valuesArgs = {"", "-v19"};
-        if (readAndGenerateFiles(args, baseDirPath, baseDP, valuesArgs))
+        float baseDP = Float.parseFloat(widthDps[0]);
+
+        if (readAndGenerateFiles(widthDps, baseDirPath, baseDP, valuesArgs))
             System.out.println("OK ALL OVER，全部生成完毕！");
     }
 
