@@ -9,4 +9,9 @@
         <item name="android:textColorPrimary">#fff</item>
     </style>
 
+    <style name="AppTheme.NoTitle" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
 </resources>

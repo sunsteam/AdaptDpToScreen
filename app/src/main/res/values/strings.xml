@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">AdaptDpToScreen</string>
+    <string name="immersive_title">Immersive</string>
     <string name="description">design in 4.7\" galaxy nexus xhdpi\n you can find this device in design
         editor\n360dp is match and 180dp is half in screen</string>
+    <string name="immersive_description">通过-v19配置改变标题栏整体高度和占据statusBar位置控件的高度，
+        保证4.4以上透明状态栏时内容不会上移，4.4以下不支持该效果时，标题栏适量缩小。右滑是图片的展示效果。\n\n
+        原本应起到这个作用的属性 fitSystemWindows 在5.0前后的作用方式不同，用起来时灵时不灵，没有这种方式稳妥，
+        具体可以看这篇文章：\n http://mp.weixin.qq.com/s/NHDnWQHNVxy3KeASgXSnFQ
+    </string>
 </resources>

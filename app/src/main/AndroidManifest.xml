@@ -18,7 +18,10 @@
         </activity>
 
         <activity android:name=".CalculateActivity"/>
-        <activity android:name=".ImmersiveActivity"/>
+
+        <activity android:name=".ImmersiveActivity"
+            android:theme="@style/AppTheme.NoTitle"/>
+
     </application>
 
 </manifest>
