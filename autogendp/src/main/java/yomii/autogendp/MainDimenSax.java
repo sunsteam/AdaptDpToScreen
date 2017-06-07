@@ -97,7 +97,7 @@ public class MainDimenSax {
                 //获取当前dp除以baseDP后的倍数
                 float multiple = Float.parseFloat(args[i]) / baseDP;
                 //创建当前dp对应的dimens文件目录
-                String outPutDir = baseDirPath + "/values" + "-w" + args[i] + "dp" + valuesArg + "/";
+                String outPutDir = baseDirPath + "/values" + "-sw" + args[i] + "dp" + valuesArg + "/";
                 new File(outPutDir).mkdirs();
                 //待生成的dimens文件里路径
                 String outPutFile = outPutDir + "dimens.xml";

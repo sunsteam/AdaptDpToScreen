@@ -1,6 +1,7 @@
 package yomii.adaptdptoscreen;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +14,17 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        if (Build.VERSION.SDK_INT >= 19) {
+            //在大于19版本时隐藏底部导航栏，View.SYSTEM_UI_FLAG_IMMERSIVE 需要 >= 19
+            Configuration configuration = getResources().getConfiguration();
+            if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                View decorView = getWindow().getDecorView();
+                int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE;
+                decorView.setSystemUiVisibility(uiOptions);
+            }
+        }
+
         setContentView(R.layout.activity_main);
         TextView argumentsTv = (TextView) findViewById(R.id.metrics_argus);
         StringBuilder sb = new StringBuilder();
@@ -27,9 +39,10 @@ public class MainActivity extends AppCompatActivity {
         appendArguments(sb, "缩放密度: " + metrics.scaledDensity);
         appendArguments(sb, "显示屏幕宽度: " + metrics.widthPixels);
         appendArguments(sb, "显示屏幕高度: " + metrics.heightPixels);
-        appendArguments(sb, "width dpi: " + metrics.widthPixels / metrics.density);
+        appendArguments(sb, "width dpi: " + widthDpi);
+        appendArguments(sb, "height dpi: " + heightDpi);
 
-        if (Build.VERSION.SDK_INT >= 17){
+        if (Build.VERSION.SDK_INT >= 17) {
             sb.append("\n");
             getWindowManager().getDefaultDisplay().getRealMetrics(metrics);
             appendArguments(sb, "真实屏幕宽度: " + metrics.widthPixels);
@@ -44,10 +57,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void toCalculatePage(View view) {
-        startActivity(new Intent(this,CalculateActivity.class));
+        startActivity(new Intent(this, CalculateActivity.class));
     }
 
     public void toImmersivePage(View view) {
-        startActivity(new Intent(this,ImmersiveActivity.class));
+        startActivity(new Intent(this, ImmersiveActivity.class));
     }
 }
