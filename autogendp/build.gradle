@@ -1,22 +1,4 @@
-apply plugin: 'com.android.library'
-
-android {
-    compileSdkVersion rootProject.setup.compileSdk
-    buildToolsVersion rootProject.setup.buildTools
-
-    defaultConfig {
-        minSdkVersion rootProject.setup.minSdk
-        targetSdkVersion rootProject.setup.targetSdk
-        versionCode rootProject.versions.code
-        versionName rootProject.versions.name
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
-}
+apply plugin: 'java'
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
@@ -30,14 +12,14 @@ def makeJar(String target, String main, String classDir) {
         args "cvfe", target, main
         args "-C", classDir
         args "", "."
-
-
     }
 }
 
 //新建一个task,名为buildLib,依赖build(build是一个自带的task)
-task buildLib(dependsOn: ['build']) << {
-    makeJar("autoGenDp.jar", "yomii.autogendp.MainDimenSax", "build/intermediates/classes/release")
-
-
+task buildLib(dependsOn: ['build']) {
+    doLast {
+        makeJar("autoGenDp.jar", "yomii.autogendp.MainDimenSax", "build/classes/main")
+    }
 }
+
+
