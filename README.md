@@ -47,7 +47,7 @@ jar包的源码来自于 [PhoneScreenMatch](https://github.com/mengzhinan/PhoneS
 
 1. 去掉 px 适配的部分，这个限制较多，不好用
 
-2. dp 适配方案从 `w<N>dp` 改为 `sw<N>dp`，取舍原因我在上一节说明了。
+2. dp 适配方案从 `w<N>dp` 改为 `sw<N>dp`，取舍原因请看我的博客 [android 适配相关知识(二) -- 自动生成swNdp适配方案 ](http://blog.csdn.net/sunsteam/article/details/73122999)。
 
 3. 增加了对 `-sdk` 参数的支持。 比如尺寸参数后面跟上 ` -a -v19 -v21` 这样的话会为 -v19 和 -v21 在分别生成一遍屏幕适配的文件夹，其他种类的参数也可以，但在适配上没啥用。
 
