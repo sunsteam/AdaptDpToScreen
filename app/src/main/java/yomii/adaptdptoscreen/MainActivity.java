@@ -15,16 +15,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (Build.VERSION.SDK_INT >= 19) {
-            //在大于19版本时隐藏底部导航栏，View.SYSTEM_UI_FLAG_IMMERSIVE 需要 >= 19
-            Configuration configuration = getResources().getConfiguration();
-            if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-                View decorView = getWindow().getDecorView();
-                int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE;
-                decorView.setSystemUiVisibility(uiOptions);
-            }
-        }
-
         setContentView(R.layout.activity_main);
         TextView argumentsTv = (TextView) findViewById(R.id.metrics_argus);
         StringBuilder sb = new StringBuilder();
@@ -50,6 +40,20 @@ public class MainActivity extends AppCompatActivity {
         }
 
         argumentsTv.setText(sb.toString());
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if (Build.VERSION.SDK_INT >= 19) {
+            //在大于19版本时隐藏底部导航栏，View.SYSTEM_UI_FLAG_IMMERSIVE 需要 >= 19
+            Configuration configuration = getResources().getConfiguration();
+            if (configuration.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                View decorView = getWindow().getDecorView();
+                int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_IMMERSIVE;
+                decorView.setSystemUiVisibility(uiOptions);
+            }
+        }
     }
 
     private void appendArguments(StringBuilder sb, String argument) {
