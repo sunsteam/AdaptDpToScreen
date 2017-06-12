@@ -1,6 +1,8 @@
 # AdaptDpToScreen
 android 多屏幕适配方案
 
+<img src="http://ofaeieqjq.bkt.clouddn.com/AdaptDpToScreen/Screenshot_emulator_Nexus_5X.png" width = "360" height = "640" alt="1080*1920" /><img src="http://ofaeieqjq.bkt.clouddn.com/AdaptDpToScreen/Screenshot_emulator_Nexus_6P.png" width = "360" height = "640" alt="1440*2560" /><img src="http://ofaeieqjq.bkt.clouddn.com/AdaptDpToScreen/Screenshot_emulator_Nexus_4.png" width = "360" height = "640" alt="768*1280" />
+
 ## 工具下载
 
 autoGenDp.bat、autoGenDp.jar
