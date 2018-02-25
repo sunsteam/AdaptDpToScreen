@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <resources>
-	<dimen name="action_bar_height">60.44dp</dimen>
-	<dimen name="empty_in_action">19.56dp</dimen>
+	<dimen name="action_bar_height">59.13dp</dimen>
+	<dimen name="empty_in_action">19.13dp</dimen>
 </resources>

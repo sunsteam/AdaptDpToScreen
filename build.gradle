@@ -3,10 +3,10 @@
 buildscript {
 
     ext {
-        setup = [compileSdk: 25,
-                 buildTools: "25.0.2",
-                 minSdk    : 11,
-                 targetSdk : 25,
+        setup = [compileSdk: 27,
+                 buildTools: "27.0.3",
+                 minSdk    : 14,
+                 targetSdk : 27,
         ]
         versions = [code: 1,
                     name: "1.0",
@@ -15,10 +15,11 @@ buildscript {
 
 
     repositories {
+        google()
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.2'
+        classpath 'com.android.tools.build:gradle:3.0.1'
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -27,6 +28,7 @@ buildscript {
 
 allprojects {
     repositories {
+        google()
         jcenter()
     }
 
