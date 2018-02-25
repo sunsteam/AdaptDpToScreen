@@ -5,8 +5,6 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/AdaptDpToScreen.iml" filepath="$PROJECT_DIR$/.idea/AdaptDpToScreen.iml" />
       <module fileurl="file://$PROJECT_DIR$/AdaptDpToScreen.iml" filepath="$PROJECT_DIR$/AdaptDpToScreen.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/autogendp/autogendp.iml" filepath="$PROJECT_DIR$/autogendp/autogendp.iml" />
       <module fileurl="file://$PROJECT_DIR$/autogendp/autogendp.iml" filepath="$PROJECT_DIR$/autogendp/autogendp.iml" />
     </modules>
   </component>
