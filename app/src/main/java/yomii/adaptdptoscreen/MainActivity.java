@@ -21,10 +21,13 @@ public class MainActivity extends AppCompatActivity {
         DisplayMetrics metrics = getResources().getDisplayMetrics();
         int widthDpi = (int) (metrics.widthPixels / metrics.density);
         int heightDpi = (int) (metrics.heightPixels / metrics.density);
+        int orientation = getResources().getConfiguration().orientation;
+        String orientationDesc = orientation == Configuration.ORIENTATION_PORTRAIT ? "竖屏" : "横屏";
 
         appendArguments(sb, "screen metrics: \n");
 
         appendArguments(sb, "屏幕Dpi: " + metrics.densityDpi);
+        appendArguments(sb, "屏幕方向: " + orientationDesc);
         appendArguments(sb, "逻辑密度: " + metrics.density);
         appendArguments(sb, "缩放密度: " + metrics.scaledDensity);
         appendArguments(sb, "显示屏幕宽度: " + metrics.widthPixels);
